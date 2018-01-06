@@ -4,14 +4,9 @@ var Twitter = require('twitter');
 // Add code required to import the keys.js file and store it in a variable
 // var spotify = new Spotify(keys.spotify);
 var client = new Twitter(Twitter.twitter);
-console.log(client);
+console.log(client.get);
 // if (process.argv[2] === "my-tweets") {
-client.stream('statuses/filter', {track:'twitter'}, function(stream) {
-  stream.on('data', function(tweet) {
-    console.log(tweet.text);
-  });
-  stream.on('error', function(error) {
-    console.log(error);
-  });
+client.get('search/tweets', {q: 'node.js'}, function(error, tweets, response) {
+  console.log(tweets);
 });
 // }
