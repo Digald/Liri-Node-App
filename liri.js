@@ -4,15 +4,35 @@ console.log("Liri is listening");
 require("dotenv").config();
 var keys = require('./keys.js');
 var Twitter = require('twitter');
-// Add code required to import the keys.js file and store it in a variable
-// var spotify = new Spotify(keys.spotify);
+var Spotify = require('node-spotify-api');
+var spotify = new Spotify(Spotify);
 var client = new Twitter(Twitter.twitter);
-// console.log(client);
+// --------------------------------------Twitter functionality
+// var params = {
+//   screen_name: 'BillNye'
+// };
+// // Display tweets in console
+// client.get('statuses/user_timeline', params, function(error, tweets, response) {
+//   if (error) {
+//     console.log(error);
+//   }
+//   if (!error) {
+//     for (var i = 0; i < tweets.length; i++) {
+//       console.log(tweets[i].created_at);
+//       console.log(tweets[i].text);
+//       console.log("-----------------------")
+//     }
+//   }
+// });
+// -------------------------------------Spotify functionality
+// console.log(spotify);
+spotify.search({
+  type: 'track',
+  query: 'All the Small Things'
+}, function(err, data) {
+  if (err) {
+    return console.log('Error occurred: ' + err);
+  }
 
-// if (process.argv[2] === "my-tweets") {
-client.get('search/tweets', {
-  q: 'node.js'
-}, function(error, tweets, response) {
-  console.log(tweets);
+  console.log(data);
 });
-// }
