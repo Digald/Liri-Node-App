@@ -5,8 +5,9 @@ require("dotenv").config();
 var keys = require('./keys.js');
 var Twitter = require('twitter');
 var Spotify = require('node-spotify-api');
-var spotify = new Spotify(Spotify);
+var spotify = new Spotify(Spotify.spotify);
 var client = new Twitter(Twitter.twitter);
+var request = require("request");
 // --------------------------------------Twitter functionality
 // var params = {
 //   screen_name: 'BillNye'
@@ -25,14 +26,28 @@ var client = new Twitter(Twitter.twitter);
 //   }
 // });
 // -------------------------------------Spotify functionality
-// console.log(spotify);
-spotify.search({
-  type: 'track',
-  query: 'All the Small Things'
-}, function(err, data) {
-  if (err) {
-    return console.log('Error occurred: ' + err);
-  }
 
-  console.log(data);
-});
+// spotify.search({
+//   type: 'track',
+//   query: 'All the Small Things',
+//   limit: 1
+// }, function(err, data) {
+//   if (err) {
+//     return console.log('Error occurred: ' + err);
+//   }
+//   var info = data.tracks.items[0];
+//   // console.log(info);
+//   console.log("Artists: " + info.artists[0].name);
+//   console.log("Track: " + info.name);
+//   console.log("Preview Song: " + info.external_urls.spotify);
+//   console.log("Album: " + info.album.name);
+// });
+
+// ----------------------------------------OMDB functionality
+// var movieName = "pokemon";
+// var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";
+// request(queryUrl, function(error, response, body) {
+//   if (!error && response.statusCode === 200) {
+//     console.log("The release year of the movie is " + JSON.parse(body).Year);
+//   }
+// });
