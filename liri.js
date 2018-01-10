@@ -92,16 +92,26 @@ function readRandomTxt() {
     if (error) {
       return console.log(error);
     }
-    console.log(data);
+    console.log(data.split(","));
+    var txtArray = data.split(",");
+    command = txtArray[0];
+    console.log(command);
+    if (txtArray[1]){
+      process.argv[3] = txtArray[1];
+    }
+    runCommands();
   });
 }
 // ----------------------------------------Data Structure
-if (command === "my-tweets") {
-  myTweets();
-} else if (command === "spotify-this-song") {
-  spotifySong();
-} else if (command === "movie-this") {
-  omdbMovieInfo();
-} else if (command === "do-what-it-says") {
-  readRandomTxt();
+runCommands();
+function runCommands() {
+  if (command === "my-tweets") {
+    myTweets();
+  } else if (command === "spotify-this-song") {
+    spotifySong();
+  } else if (command === "movie-this") {
+    omdbMovieInfo();
+  } else if (command === "do-what-it-says") {
+    readRandomTxt();
+  }
 }
