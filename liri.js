@@ -92,10 +92,10 @@ function readRandomTxt() {
     if (error) {
       return console.log(error);
     }
-    console.log(data.split(","));
+    // console.log(data.split(","));
     var txtArray = data.split(",");
     command = txtArray[0];
-    console.log(command);
+    // console.log(command);
     if (txtArray[1]){
       process.argv[3] = txtArray[1];
     }
